@@ -4,8 +4,7 @@ import React, { useState, useEffect } from 'react';
 function ExperienceCard({ role, dates, company, responsibilities, technologies }) {
   return (
     <div className="relative">
-      <div className="absolute left-0 top-1/2 transform -translate-y-1/2 w-2 h-2 rounded-full bg-indigo-600"></div>
-      <div className="ml-10 pl-6 pt-6 pb-6 bg-gray-800 text-white rounded-lg shadow-lg">
+      <div className="p-10 bg-gray-800 text-white rounded-lg shadow-lg">
         <h3 className="text-2xl font-semibold">{role}</h3>
         <p className="text-sm text-gray-400">{dates}</p>
         <p className="mt-4">Company: {company}</p>
@@ -28,12 +27,30 @@ function ExperienceCard({ role, dates, company, responsibilities, technologies }
   );
 }
 
+function SkillsCard({ skill, imagePath }) {
+  return (
+    <div className="bg-white p-4 shadow-md rounded">
+      <img className='w-[20%]' alt='.NET' src={imagePath} />
+      {skill}
+    </div>
+  )
+};
+
+function ProjectCard({ name, description, githubUrl }) {
+  return (
+    <div className='bg-white p-6 shadow-md rounded'>
+      <h4 className='text-xl font-bold'>{name}</h4>
+      <p>{description}</p>
+      <a href={githubUrl}><img className='w-10 ml-[95%] right-0 bottom-0 ' src='github.png' /></a>
+    </div>
+  )
+}
+
 function updateExperienceCounter() {
-  const startDate = new Date('October 1, 2022'); // Starting from October 2022
+  const startDate = new Date('October 1, 2022');
   const currentDate = new Date();
   const timeDiff = currentDate - startDate;
 
-  // Calculate time difference in years, months, days, and seconds
   const years = Math.floor(timeDiff / (1000 * 60 * 60 * 24 * 365.25));
   const months = Math.floor(timeDiff / (1000 * 60 * 60 * 24 * 30.44)) % 12;
   const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24)) % 30;
@@ -68,7 +85,7 @@ function App() {
     <div className="min-h-screen bg-gray-100 text-gray-900 font-sans">
       {/* Header */}
       <header className="bg-gray-900 text-white py-4 shadow-md">
-        <nav className="container mx-auto flex justify-between items-center">
+        <nav className="container mx-auto flex px-4 justify-between items-center">
           <h1 className="text-2xl font-bold">My Portfolio</h1>
           <ul className="flex space-x-6">
             <li><a href="#about" className="hover:underline">About</a></li>
@@ -101,36 +118,24 @@ function App() {
 
 
       {/* About Section */}
-      <section id="about" className="container mx-auto py-10">
+      <section id="about" className="container mx-auto p-10">
         <h3 className="text-3xl font-bold mb-4">About Me</h3>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc tincidunt lobortis lobortis. Maecenas volutpat auctor porttitor. Proin tincidunt scelerisque malesuada. Donec ut pulvinar lacus, sed interdum dui. Ut fringilla dignissim bibendum. Nullam ut lacus elementum, efficitur felis at, dictum enim. Aenean quis suscipit mi. Duis in justo tristique risus feugiat aliquam quis id elit. Aliquam arcu elit, aliquam nec nulla sed, volutpat vestibulum nibh. Morbi sed hendrerit sem, eu pulvinar nulla. Praesent nec purus finibus ligula gravida placerat non bibendum nisl. </p>
       </section>
 
       {/* Skills Section */}
-      <section id="skills" className="container mx-auto py-10">
+      <section id="skills" className="container mx-auto p-10">
         <h3 className="text-3xl font-bold mb-4">Skills</h3>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-          <div className="bg-white p-4 shadow-md rounded">
-            <img className='w-[20%]' alt='.NET' src='dotnet.png' />
-            .NET
-          </div>
-          <div className="bg-white p-4 shadow-md rounded">
-            <img className='w-[20%]' alt='azure' src='azure.png' />
-            Azure
-          </div>
-          <div className="bg-white p-4 shadow-md rounded">
-            <img className='w-[20%]' alt='python' src='python.png' />
-            Python
-          </div>
-          <div className="bg-white p-4 shadow-md rounded">
-            <img className='w-[20%]' alt='python' src='python.png' />
-            Python
-          </div>
+          <SkillsCard skill=".NET" imagePath="dotnet.png" />
+          <SkillsCard skill="Azure" imagePath="azure.png" />
+          <SkillsCard skill="Python" imagePath="python.png" />
+          <SkillsCard skill="React" imagePath="react.png" />
         </div>
       </section>
 
       {/* Experience Section */}
-      <section id="experiences" className="container mx-auto py-10">
+      <section id="experiences" className="container mx-auto p-10">
         <h2 className="text-4xl font-bold text-center mb-8">Experience</h2>
         <div className="space-y-10">
           <ExperienceCard
@@ -178,38 +183,20 @@ function App() {
       </section>
 
       {/* Projects Section */}
-      <section id="projects" className="container mx-auto py-10">
+      <section id="projects" className="container mx-auto p-10">
         <h3 className="text-3xl font-bold mb-4">Hobby Projects</h3>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div className="bg-white p-6 shadow-md rounded">
-            <h4 className="text-xl font-bold">Project 1</h4>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc tincidunt lobortis lobortis. Maecenas volutpat auctor porttitor. Proin tincidunt scelerisque malesuada. Donec ut pulvinar lacus, sed interdum dui. Ut fringilla dignissim bibendum. Nullam ut lacus elementum, efficitur felis at, dictum enim. Aenean quis suscipit mi. Duis in justo tristique risus feugiat aliquam quis id elit. Aliquam arcu elit, aliquam nec nulla sed, volutpat vestibulum nibh. Morbi sed hendrerit sem, eu pulvinar nulla. Praesent nec purus finibus ligula gravida placerat non bibendum nisl. </p>
-          </div>
-          <div className="bg-white p-6 shadow-md rounded">
-            <h4 className="text-xl font-bold">Project 2</h4>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc tincidunt lobortis lobortis. Maecenas volutpat auctor porttitor. Proin tincidunt scelerisque malesuada. Donec ut pulvinar lacus, sed interdum dui. Ut fringilla dignissim bibendum. Nullam ut lacus elementum, efficitur felis at, dictum enim. Aenean quis suscipit mi. Duis in justo tristique risus feugiat aliquam quis id elit. Aliquam arcu elit, aliquam nec nulla sed, volutpat vestibulum nibh. Morbi sed hendrerit sem, eu pulvinar nulla. Praesent nec purus finibus ligula gravida placerat non bibendum nisl. </p>
-          </div>
-          <div className="bg-white p-6 shadow-md rounded">
-            <h4 className="text-xl font-bold">Project 3</h4>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc tincidunt lobortis lobortis. Maecenas volutpat auctor porttitor. Proin tincidunt scelerisque malesuada. Donec ut pulvinar lacus, sed interdum dui. Ut fringilla dignissim bibendum. Nullam ut lacus elementum, efficitur felis at, dictum enim. Aenean quis suscipit mi. Duis in justo tristique risus feugiat aliquam quis id elit. Aliquam arcu elit, aliquam nec nulla sed, volutpat vestibulum nibh. Morbi sed hendrerit sem, eu pulvinar nulla. Praesent nec purus finibus ligula gravida placerat non bibendum nisl. </p>
-          </div>
-          <div className="bg-white p-6 shadow-md rounded">
-            <h4 className="text-xl font-bold">Project 4</h4>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc tincidunt lobortis lobortis. Maecenas volutpat auctor porttitor. Proin tincidunt scelerisque malesuada. Donec ut pulvinar lacus, sed interdum dui. Ut fringilla dignissim bibendum. Nullam ut lacus elementum, efficitur felis at, dictum enim. Aenean quis suscipit mi. Duis in justo tristique risus feugiat aliquam quis id elit. Aliquam arcu elit, aliquam nec nulla sed, volutpat vestibulum nibh. Morbi sed hendrerit sem, eu pulvinar nulla. Praesent nec purus finibus ligula gravida placerat non bibendum nisl. </p>
-          </div>
-          <div className="bg-white p-6 shadow-md rounded">
-            <h4 className="text-xl font-bold">Project 5</h4>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc tincidunt lobortis lobortis. Maecenas volutpat auctor porttitor. Proin tincidunt scelerisque malesuada. Donec ut pulvinar lacus, sed interdum dui. Ut fringilla dignissim bibendum. Nullam ut lacus elementum, efficitur felis at, dictum enim. Aenean quis suscipit mi. Duis in justo tristique risus feugiat aliquam quis id elit. Aliquam arcu elit, aliquam nec nulla sed, volutpat vestibulum nibh. Morbi sed hendrerit sem, eu pulvinar nulla. Praesent nec purus finibus ligula gravida placerat non bibendum nisl. </p>
-          </div>
-          <div className="bg-white p-6 shadow-md rounded">
-            <h4 className="text-xl font-bold">Project 6</h4>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc tincidunt lobortis lobortis. Maecenas volutpat auctor porttitor. Proin tincidunt scelerisque malesuada. Donec ut pulvinar lacus, sed interdum dui. Ut fringilla dignissim bibendum. Nullam ut lacus elementum, efficitur felis at, dictum enim. Aenean quis suscipit mi. Duis in justo tristique risus feugiat aliquam quis id elit. Aliquam arcu elit, aliquam nec nulla sed, volutpat vestibulum nibh. Morbi sed hendrerit sem, eu pulvinar nulla. Praesent nec purus finibus ligula gravida placerat non bibendum nisl. </p>
-          </div>
+          <ProjectCard githubUrl="https://github.com/leonbos1/gainz-workout-app" name="Workout App" description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc tincidunt lobortis lobortis. Maecenas volutpat auctor porttitor. Proin tincidunt scelerisque malesuada. Donec ut pulvinar lacus, sed interdum dui. Ut fringilla dignissim bibendum. Nullam ut lacus elementum, efficitur felis at, dictum enim. Aenean quis suscipit mi. Duis in justo tristique risus feugiat aliquam quis id elit. Aliquam arcu elit, aliquam nec nulla sed, volutpat vestibulum nibh. Morbi sed hendrerit sem, eu pulvinar nulla. Praesent nec purus finibus ligula gravida placerat non bibendum nisl. " />
+          <ProjectCard githubUrl="https://github.com/leonbos1/occasion-scraper" name="Occassion Scraper" description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc tincidunt lobortis lobortis. Maecenas volutpat auctor porttitor. Proin tincidunt scelerisque malesuada. Donec ut pulvinar lacus, sed interdum dui. Ut fringilla dignissim bibendum. Nullam ut lacus elementum, efficitur felis at, dictum enim. Aenean quis suscipit mi. Duis in justo tristique risus feugiat aliquam quis id elit. Aliquam arcu elit, aliquam nec nulla sed, volutpat vestibulum nibh. Morbi sed hendrerit sem, eu pulvinar nulla. Praesent nec purus finibus ligula gravida placerat non bibendum nisl. " />
+          <ProjectCard githubUrl="https://github.com/leonbos1/temperature" name="Home Temperature sensor" description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc tincidunt lobortis lobortis. Maecenas volutpat auctor porttitor. Proin tincidunt scelerisque malesuada. Donec ut pulvinar lacus, sed interdum dui. Ut fringilla dignissim bibendum. Nullam ut lacus elementum, efficitur felis at, dictum enim. Aenean quis suscipit mi. Duis in justo tristique risus feugiat aliquam quis id elit. Aliquam arcu elit, aliquam nec nulla sed, volutpat vestibulum nibh. Morbi sed hendrerit sem, eu pulvinar nulla. Praesent nec purus finibus ligula gravida placerat non bibendum nisl. " />
+          <ProjectCard name="" description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc tincidunt lobortis lobortis. Maecenas volutpat auctor porttitor. Proin tincidunt scelerisque malesuada. Donec ut pulvinar lacus, sed interdum dui. Ut fringilla dignissim bibendum. Nullam ut lacus elementum, efficitur felis at, dictum enim. Aenean quis suscipit mi. Duis in justo tristique risus feugiat aliquam quis id elit. Aliquam arcu elit, aliquam nec nulla sed, volutpat vestibulum nibh. Morbi sed hendrerit sem, eu pulvinar nulla. Praesent nec purus finibus ligula gravida placerat non bibendum nisl. " />
+          <ProjectCard name="" description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc tincidunt lobortis lobortis. Maecenas volutpat auctor porttitor. Proin tincidunt scelerisque malesuada. Donec ut pulvinar lacus, sed interdum dui. Ut fringilla dignissim bibendum. Nullam ut lacus elementum, efficitur felis at, dictum enim. Aenean quis suscipit mi. Duis in justo tristique risus feugiat aliquam quis id elit. Aliquam arcu elit, aliquam nec nulla sed, volutpat vestibulum nibh. Morbi sed hendrerit sem, eu pulvinar nulla. Praesent nec purus finibus ligula gravida placerat non bibendum nisl. " />
+          <ProjectCard name="" description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc tincidunt lobortis lobortis. Maecenas volutpat auctor porttitor. Proin tincidunt scelerisque malesuada. Donec ut pulvinar lacus, sed interdum dui. Ut fringilla dignissim bibendum. Nullam ut lacus elementum, efficitur felis at, dictum enim. Aenean quis suscipit mi. Duis in justo tristique risus feugiat aliquam quis id elit. Aliquam arcu elit, aliquam nec nulla sed, volutpat vestibulum nibh. Morbi sed hendrerit sem, eu pulvinar nulla. Praesent nec purus finibus ligula gravida placerat non bibendum nisl. " />
         </div>
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="container mx-auto py-10">
+      <section id="contact" className="container mx-auto p-10">
         <h3 className="text-3xl font-bold mb-4">Contact Me</h3>
         <p>If you'd like to get in touch, email me at <a href="mailto:your.email@example.com" className="text-blue-600 hover:underline">your.email@example.com</a>.</p>
       </section>
