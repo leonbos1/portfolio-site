@@ -1,13 +1,16 @@
 import './App.css';
 import React, { useState, useEffect } from 'react';
 
-function ExperienceCard({ role, dates, company, description, technologies }) {
+function ExperienceCard({ role, dates, company, description, technologies, grade }) {
   return (
     <div className="relative">
       <div className="p-10 bg-gray-800 text-white rounded-2xl shadow-lg">
         <h3 className="text-2xl font-semibold">{role}</h3>
         <p className="text-sm text-gray-400">{dates}</p>
         <p className="mt-4 font-bold">Company: {company}</p>
+        {grade &&
+          <p className="mb-2 font-bold">Grade: {grade}</p>
+        }
         <p> {description} </p>
         {/* Display Technologies */}
         <div className="mt-4">
@@ -161,7 +164,6 @@ function App() {
       {/* Experience counter */}
       <ExperienceCounter />
 
-
       {/* About Section */}
       <section id="about" className="container mx-auto p-10">
         <h3 className="text-3xl font-bold mb-4">About Me</h3>
@@ -201,7 +203,7 @@ function App() {
               },
               {
                 'image': 'ef.png',
-                'description': 'EntityFramework'
+                'description': 'Entity Framework'
               }
             ]}
           />
@@ -209,17 +211,18 @@ function App() {
             role="Internship Software Developer"
             dates="February 2023 - June 2023"
             company="Bencom Group"
+            grade="9.0/10"
             description={[
               'Developed a new "Postcode availability check" for internetten.nl. First experience building a new project in .NET and first experience putting a production application in the cloud with Azure',
             ]}
             technologies={[
               {
                 'image': 'dotnet.png',
-                'description': ''
+                'description': '.NET'
               },
               {
                 'image': 'azure.png',
-                'description': ''
+                'description': 'Azure'
               }
             ]}
           />
@@ -227,6 +230,7 @@ function App() {
             role="Graduation Internship Data Scientist"
             dates="February 2024 - June 2024"
             company="RDW"
+            grade="9.0/10"
             description={[
               'Created a Proof of concept of a machine learning model to extract Vehicle Identification Numbers out of pictures. Can be used to automate the process of importing cars to The Netherlands. Helps to save a lot of manual labor, 250.000 cars are imported every year, 3 pictures have to be validated per car',
             ]}
@@ -287,7 +291,7 @@ function App() {
       {/* Contact Section */}
       <section id="contact" className="container mx-auto p-10">
         <h3 className="text-3xl font-bold mb-4">Contact Me</h3>
-        <p>If you'd like to get in touch, email me at <a href="mailto:your.email@example.com" className="text-blue-600 hover:underline">your.email@example.com</a>.</p>
+        <p>If you'd like to get in touch, email me at <a href="mailto:your.email@example.com" className="text-blue-600 hover:underline">bos.leon2001@gmail.com</a>.</p>
       </section>
 
       {/* Footer */}
