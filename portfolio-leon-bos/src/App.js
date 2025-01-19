@@ -320,18 +320,28 @@ function App() {
         <div className='bg-white p-6 shadow-2xl rounded-2xl relative pb-16'>
           <h3 className="text-xl md:text-3xl font-bold mb-6">Contact Me</h3>
           <p className="mb-6">Feel free to reach out to me through email or connect with me on LinkedIn!</p>
-          <div className="flex justify-center space-x-6">
+          <div className="flex flex-col sm:flex-row justify-center sm:space-x-6 space-y-4 sm:space-y-0">
             {/* Email */}
-            <a href="mailto:bos.leon2001@gmail.com" className="flex items-center space-x-2 hover:text-blue-600">
+            <a
+              href="mailto:bos.leon2001@gmail.com"
+              className="flex items-center space-x-2 hover:text-blue-600"
+            >
               <img src="email.png" alt="Email" className="w-8 h-8" />
-              <span className="text-lg font-medium">bos.leon2001@gmail.com</span>
+              <span className="text-base md:text-lg font-medium">bos.leon2001@gmail.com</span>
             </a>
             {/* LinkedIn */}
-            <a href="https://www.linkedin.com/in/leon-bos-0888a7215/" target="_blank" rel="noopener noreferrer" className="flex items-center space-x-2 hover:text-blue-600">
+            <a
+              href="https://www.linkedin.com/in/leon-bos-0888a7215/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center space-x-2 hover:text-blue-600"
+            >
               <img src="linkedin.png" alt="LinkedIn" className="w-8 h-8" />
-              <span className="text-lg font-medium">Leon Bos</span>
+              <span className="text-base md:text-lg font-medium">Leon Bos</span>
             </a>
-          </div>        </div>
+          </div>
+
+        </div>
       </section>
 
       {/* Footer */}
